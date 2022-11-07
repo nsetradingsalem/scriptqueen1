@@ -127,7 +127,9 @@
                     
                     <b>{{ value.time }}</b> | 
                     <b class="badge badge-info">{{ value.section }}</b> |  
-                    <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
+                    {% if value.below_three == True %}
+                      <span class="top" style="text-align:center"><b>AC</b></span>
+                    {% endif %}
                   </li>
                   {% endif %}
                   {% endfor %}
@@ -206,6 +208,9 @@
                     
                     <b>{{ value.time }}</b> | 
                     <b class="badge badge-info">{{ value.section }}</b> |  
+                    {% if value.below_three == True %}
+                      <span class="top" style="text-align:center"><b>AC</b></span>
+                    {% endif %}
                     <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                   </li>
                   {% endif %}
@@ -292,6 +297,9 @@
                     <!-- <span class="top" style="text-align:center"><b class="badge badge-secondary">{{ value.ltp }}</b></span> | -->
                     <b>{{ value.time }}</b> | 
                     <b class="badge badge-info">{{ value.section }}</b> |  
+                    {% if value.below_three == True %}
+                    <span class="top" style="text-align:center"><b>AC</b></span>
+                    {% endif %}
                     <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                   </li>
                   {% endif %}
@@ -374,7 +382,10 @@
                     {% endif %} | 
                     <!-- <span class="top" style="text-align:center"><b class="badge badge-secondary">{{ value.ltp }}</b></span> | -->
                     <b>{{ value.time }}</b> | 
-                    <b class="badge badge-info">{{ value.section }}</b> |  
+                    <b class="badge badge-info">{{ value.section }}</b> | 
+                    {% if value.below_three == True %}
+                    <span class="top" style="text-align:center"><b>AC</b></span>
+                    {% endif %} 
                     <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                   </li>
                   {% endif %}
@@ -533,6 +544,9 @@
                   
                   <b>{{ value.time }}</b> | 
                   <b class="badge badge-info">{{ value.section }}</b> |  
+                  {% if value.below_three == True %}
+                  <span class="top" style="text-align:center"><b>AC</b></span>
+                  {% endif %}
                   <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                 </li>
                 {% endif %}
@@ -612,6 +626,9 @@
                   
                   <b>{{ value.time }}</b> | 
                   <b class="badge badge-info">{{ value.section }}</b> |  
+                  {% if value.below_three == True %}
+                  <span class="top" style="text-align:center"><b>AC</b></span>
+                  {% endif %}
                   <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                 </li>
                 {% endif %}
@@ -698,6 +715,9 @@
                   <!-- <span class="top" style="text-align:center"><b class="badge badge-secondary">{{ value.ltp }}</b></span> | -->
                   <b>{{ value.time }}</b> | 
                   <b class="badge badge-info">{{ value.section }}</b> |  
+                  {% if value.below_three == True %}
+                  <span class="top" style="text-align:center"><b>AC</b></span>
+                  {% endif %}
                   <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                 </li>
                 {% endif %}
@@ -781,6 +801,9 @@
                   <!-- <span class="top" style="text-align:center"><b class="badge badge-secondary">{{ value.ltp }}</b></span> | -->
                   <b>{{ value.time }}</b> | 
                   <b class="badge badge-info">{{ value.section }}</b> |  
+                  {% if value.below_three == True %}
+                  <span class="top" style="text-align:center"><b>AC</b></span>
+                  {% endif %}
                   <!-- <span class="top" style="text-align:center"><b>{{ value.difference }}</b></span> -->
                 </li>
                 {% endif %}
