@@ -178,6 +178,8 @@ def create_currency():
         cestrike = final_df.iloc[count]['strike']
         ceoi1 = final_df.iloc[count]['oi']
         
+        coi_double = len(final_df[final_df['oi'] == ceoi1])
+
         import datetime as det
         celtt = final_df.iloc[count]['ltt']
         celtt = dt.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S')
@@ -208,11 +210,12 @@ def create_currency():
 
         pestrike = final_df.iloc[count]['strike']
         peoi2 = final_df.iloc[count]['oi']
-
-        # print(ceoi2)
+        poi_double = len(final_df[final_df['oi'] == peoi2])
+            # print(ceoi2)
         # print(pestrike)
         # print(peoi2)   
-
+        if coi_double > 1 or poi_double > 1:
+            return False
         OITot = {"celtt":celtt,"ceoi1":ceoi1,"cestrike":cestrike,"peoi1":peoi1,"peltt":peltt,"peoi2":peoi2,"pestrike":pestrike,"ceoi2":ceoi2}
         print("Exit OITotl")
         return OITot
@@ -252,6 +255,7 @@ def create_currency():
             # print("5")
             cestrike = final_df.iloc[count]['strike']
             ceoi1 = final_df.iloc[count]['oi_change']
+            coi_double = len(final_df[final_df['oi_change'] == ceoi1])
             import datetime as det
             # print("6")
             my_time_string = "15:30:00"
@@ -281,7 +285,9 @@ def create_currency():
 
             pestrike = final_df.iloc[count]['strike']
             peoi2 = final_df.iloc[count]['oi_change']
-
+            poi_double = len(final_df[final_df['oi_change'] == peoi2])
+            if coi_double > 1 or poi_double > 1:
+                return False
             OIChan = {"celtt":celtt,"ceoi1":ceoi1,"cestrike":cestrike,"peoi1":peoi1,"peltt":peltt,"peoi2":peoi2,"pestrike":pestrike,"ceoi2":ceoi2}
             print("Exit OiChnge")
             return OIChan
@@ -302,8 +308,14 @@ def create_currency():
         # value2 = LiveOITotal.objects.all()
         # print("Before changev")
         OIChangeValue = OIChange(df,item,dte)
+
+        if not OIChangeValue:
+            return False
         
         OITotalValue = OITotal(df,item,dte)
+
+        if not OITotalValue:
+            return False
 
         percentChange = OIPercentChange(df)
 
@@ -496,7 +508,9 @@ def create_currency():
             # print(item)
             #count = count + 1
 
-            optionChainprocess(df,symbol,dte)
+            if optionChainprocess(df,symbol,dte) == False:
+                continue
+
 
         except websocket.WebSocketConnectionClosedException as e:
             print('This caught the websocket exception in optionchain realtime')
@@ -517,5 +531,3 @@ def create_currency():
 
 while True:
     create_currency()
-
-    
